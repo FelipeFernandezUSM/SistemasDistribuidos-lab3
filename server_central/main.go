@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"google.golang.org/grpc"
-	pb "github.com/FelipeFernandezUSM/SistemasDistribuidos-lab3/communication"
+	pb "github.com/FelipeFernandezUSM /SistemasDistribuidos-lab3/communication"
 )
 
 type server struct {
