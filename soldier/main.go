@@ -68,6 +68,5 @@ func main() {
 		}
 
 		log.Printf("Respuesta negativa recibida para el equipo %d. Reintentando en 3 segundos...", TeamId)
-		break
 	}
 }
