@@ -1,18 +1,20 @@
-# Use an official Golang runtime as the base image
+# Use the official golang image with the desired version
 FROM golang:1.22.2 AS builder
 
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy the Go module files and download dependencies
+# Copy the Go modules files
 COPY go.mod go.sum ./
+
+# Download and install Go dependencies
 RUN go mod download
 
-# Copy the entire project directory into the container
+# Copy the rest of the application source code
 COPY . .
 
 # Build the Go application
-RUN go build -o main .
+RUN go build -o server_central .
 
 # Use a minimal base image to reduce the size of the final image
 FROM alpine:latest
@@ -21,10 +23,10 @@ FROM alpine:latest
 WORKDIR /app
 
 # Copy the binary built in the previous stage
-COPY --from=builder /app/main .
+COPY --from=builder /app/server_central .
 
-# Expose the port that your application listens on
+# Expose the port on which the server listens
 EXPOSE 8080
 
-# Command to run the executable
-CMD ["./main"]
+# Command to run the server binary
+CMD ["./server_central"]
