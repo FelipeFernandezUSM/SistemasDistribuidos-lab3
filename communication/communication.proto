@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package communication;
+
+option go_package = ".";
+
+// Mensaje enviado por el equipo al servidor
+message Request {
+    int32 team_id = 1;
+    int32 AT_quantity = 2;
+    int32 MP_quantity = 3;
+}
+
+// Respuesta del servidor al equipo
+message Response {
+    bool success = 1;
+}
+
+// Servicio proporcionado por el servidor
+service CentralServer {
+    rpc SolicitarM(Request) returns (Response) {}
+}
