@@ -6,7 +6,7 @@ import (
 	"math/rand"
 	"time"
 
-	pb "lba-3/communication"
+	pb "github.com/FelipeFernandezUSM/SistemasDistribuidos-lab3/communication"
 
 	"google.golang.org/grpc"
 )
